@@ -1,28 +1,47 @@
 package main
 
 import (
-	"fmt"
-	"os"
+	"log"
+	"net/http"
 
-	"thrive-project/httpsrv"
+	"thrive-project/controller"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	srv := httpsrv.Server{
-		ListenIP:   "127.0.0.1",
-		ListenPort: "8080",
-		DBConnStr:  "postgres://xuykskhj:QN8GVgdq3dq8I3Gvg9F3ODGXETK95lFy@heffalump.db.elephantsql.com/xuykskhj",
+	// initialize echo framework
+	e := echo.New()
+
+	// connect to database
+	db, err := Connection()
+	
+
+	// _, err := Connection()
+	if err != nil {
+		log.Panic(err)
+		return
 	}
 
-	fmt.Println("starting http server...")
+	h := controller.New(db)
 
-	if err := srv.Init(); err != nil {
-		fmt.Println("error initializing server")
-		fmt.Println(err)
-		os.Exit(1)
-	}
 
-	if err := srv.Start(); err != nil {
-		fmt.Println(err)
-	}
+	// root
+	e.GET("/", func(c echo.Context) error {
+		result := map[string]string{
+			"response_code": "200",
+			"message":       "Success to connect service",
+		}
+
+		return c.JSON(http.StatusOK, result)
+	})
+
+	cust := e.Group("customer")
+	cust.GET("", h.GetCustomer)
+	// cust.GET("/:id", h.GetCustomerByID)
+	// cust.POST("", h.CreateCustomer)
+	// cust.PUT("/:id", h.UpdateCustomer)
+	// cust.DELETE("/:id", h.DeleteCustomer)
+
+	// start service echo
+	e.Logger.Fatal(e.Start(":5002"))
 }

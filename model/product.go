@@ -1,12 +1,5 @@
 package model
 
-import (
-	"errors"
-	"time"
-
-	"github.com/jinzhu/gorm"
-)
-
 type Product struct {
 	ProductId	 int       `gorm:"primary_key;auto_increment" json:"product_id"`
 	ProductName  string    `gorm:"size:255;not null;unique" json:"product_name"`
