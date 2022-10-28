@@ -55,7 +55,6 @@ func (p *Product) FindProductByID(db *gorm.DB, keyword int32) (*Product, error) 
 }
 
 func (p *Product) UpdateUnit(db *gorm.DB, product_id int32) error {
-
 	var err error
 	db = db.Debug().Model(&Product{}).Where("product_id = ?", product_id).Take(&Product{}).UpdateColumns(
 		map[string]interface{}{
@@ -63,7 +62,7 @@ func (p *Product) UpdateUnit(db *gorm.DB, product_id int32) error {
 			"updated_at": time.Now(),
 		},
 	)
-	err = db.Debug().Model(&Product{}).Where("product_id = ?", product_id).Take(&p).Error
+	err = db.Debug().Model(&Product{}).Where("product_id = ?", product_id).Take(&Product{}).Error
 	if err != nil {
 		return err
 	}
