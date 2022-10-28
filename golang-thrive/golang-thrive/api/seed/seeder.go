@@ -40,21 +40,21 @@ var products = []models.Product{
 		DisplayName: "Qtela Tempe Original 55 gr",
 		Category:    "Makanan Ringan",
 		Price:       6500,
-		Quantity:    80,
+		Quantity:    100,
 		Description: "Makanan Ringan cocok untuk bersantai",
 	},
 	models.Product{
 		DisplayName: "Chitato Sapi Bumbu Bakar 68 Gr",
 		Category:    "Makanan Ringan",
 		Price:       21000,
-		Quantity:    20,
+		Quantity:    200,
 		Description: "Makanan Ringan cocok untuk bersantai",
 	},
 	models.Product{
 		DisplayName: "Maxicorn Roasted Corn 160 Gr",
 		Category:    "Makanan Ringan",
 		Price:       10000,
-		Quantity:    40,
+		Quantity:    150,
 		Description: "Makanan Ringan cocok untuk bersantai",
 	},
 }
@@ -67,6 +67,7 @@ var transactions = []models.Transaction{
 		ProductId:     1,
 		Price:         30000,
 		Total:         2,
+		PaymentStatus: "Done",
 	},
 	models.Transaction{
 		TransactionId: "e7ee4de9-09ed-4566-9a7b-d76bf185fda4",
@@ -75,6 +76,7 @@ var transactions = []models.Transaction{
 		ProductId:     3,
 		Price:         16000,
 		Total:         2,
+		PaymentStatus: "Done",
 	},
 }
 
@@ -82,13 +84,13 @@ var carts = []models.Cart{
 	models.Cart{
 		CartId:    1,
 		ProductId: 1,
-		UserId:    2,
+		UserId:    1,
 		Total:     10,
 	},
 	models.Cart{
 		CartId:    2,
 		ProductId: 3,
-		UserId:    2,
+		UserId:    1,
 		Total:     8,
 	},
 	models.Cart{
