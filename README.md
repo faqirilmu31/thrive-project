@@ -1,20 +1,25 @@
 # Thrive Golang Api
 
+Repository ini adalah repository untuk pengumpulan mini project Thrive Academy.
 Dibuat oleh:
 
 - Agung Ma'ruf
 - Muhammad Azhari
 - Reni Setyaningsih
 
+Untuk dapat menjalankan API dapat menggunakan command :
+`docker-compose up --build`
+
 ## Requirement Processes
 
 In this application the user can:
-
-(V) Able to query product based on category
-(V) Able to query product based on price
-(V) Able to process order (shipment status)
-(V) Impact to stock (decreament the amount of stock)
-(X) Able to send email
+ |**Requirements**|**Checklist**|
+ |:-----------------------|:-----------------:|
+ |Able to query product based on category|✅|
+ |Able to query product based on price|✅|
+ |Able to process order (shipment status|✅|
+ |Impact to stock (decreament the amount of stock)|✅|
+ |Able to send email|❌|
 
 - Login
 - Create a user
@@ -27,7 +32,7 @@ In this application the user can:
 - Delete product from cart
 - Checkout
 
-This API will be built with:
+## This API will be built with:
 
 - Go
 - GORM (A Golang ORM)
